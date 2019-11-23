@@ -1,17 +1,18 @@
 package models
 
 import (
+	"encoding/json"
 	"time"
 )
 
 type User struct {
-	ID                string	`json:"id,omitempty"`
-	Nick              string	`json:"nick,omitempty"`
-	Bio               string	`json:"bio,omitempty"`
-	SubscriberCount   int		`json:"subscriber_count,omitempty"`
-	SubscriptionCount int		`json:"subscription_count,omitempty"`
-	PostCount         int		`json:"post_count,omitempty"`
-	Created           int64		`json:"created,omitempty"`
+	ID                string `json:"id,omitempty"`
+	Nick              string `json:"nick,omitempty"`
+	Bio               string `json:"bio,omitempty"`
+	SubscriberCount   int    `json:"subscriber_count,omitempty"`
+	SubscriptionCount int    `json:"subscription_count,omitempty"`
+	PostCount         int    `json:"post_count,omitempty"`
+	Created           int64  `json:"created,omitempty"`
 }
 
 func (user User) New(nick string, about string, id string) User {
