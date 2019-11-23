@@ -5,13 +5,13 @@ import (
 )
 
 type User struct {
-	ID                string
-	Nick              string
-	Bio               string
-	SubscriberCount   int
-	SubscriptionCount int
-	PostCount         int
-	Created           int64
+	ID                string	`json:"id"`
+	Nick              string	`json:"nick"`
+	Bio               string	`json:"bio"`
+	SubscriberCount   int		`json:"subscriber_count"`
+	SubscriptionCount int		`json:"subscription_count"`
+	PostCount         int		`json:"post_count"`
+	Created           int64		`json:"created"`
 }
 
 func (user User) New(nick string, about string, id string) User {
