@@ -6,16 +6,16 @@ import (
 )
 
 type User struct {
-	ID                string `json:"id,omitempty"`
-	Nick              string `json:"nick,omitempty"`
-	Bio               string `json:"bio,omitempty"`
-	SubscriberCount   int    `json:"subscriber_count,omitempty"`
-	SubscriptionCount int    `json:"subscription_count,omitempty"`
-	PostCount         int    `json:"post_count,omitempty"`
-	Created           int64  `json:"created,omitempty"`
+	ID                string `json:"id"`
+	Nick              string `json:"nick"`
+	Bio               string `json:"bio"`
+	SubscriberCount   int    `json:"subscriber_count"`
+	SubscriptionCount int    `json:"subscription_count"`
+	PostCount         int    `json:"post_count"`
+	Created           int64  `json:"created"`
 }
 
-func (user User) New(nick string, about string, id string) User {
+func (user User) New(nick string, bio string, id string) User {
 	var created User = User{
 		ID:                id,
 		Nick:              nick,
@@ -26,4 +26,8 @@ func (user User) New(nick string, about string, id string) User {
 	}
 
 	return created
+}
+
+func (user User) JSON() ([]byte, error) {
+	return json.Marshal(user)
 }
