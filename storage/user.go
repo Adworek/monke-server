@@ -24,14 +24,28 @@ func NewUser(nick string, password string) models.User {
 		_, exists = users[id]
 	}
 
-	var user = models.User.New(nick, "", id)
+	var user = models.User{}.New(nick, "", id)
 
 	var hashed hash.Hash = sha256.New()
 	hashed.Write([]byte(password))
 
 	users[id] = user
-	nicks[user.Nick] = id
+	nicks[strings.ToLower(user.Nick)] = id
 	auths[id] = hashed.Sum(nil)
 
 	return user
+}
+
+func UserByNick(nick string) (models.User, bool) {
+	var user_id string
+	var exists bool
+	user_id, exists = nicks[strings.ToLower(nick)]
+
+	var user models.User
+
+	if !exists {
+		return user, false
+	}
+
+	return users[user_id], true
 }
