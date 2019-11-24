@@ -5,6 +5,7 @@ import (
 	"github.com/satori/go.uuid"
 	"hash"
 	"monke-server/models"
+	"strings"
 )
 
 // user id -> user object
